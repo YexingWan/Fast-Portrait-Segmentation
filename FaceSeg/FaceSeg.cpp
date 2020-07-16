@@ -18,6 +18,15 @@ double clockToMilliseconds(clock_t ticks) {
 
 int main(int argc, char* argv[])
 {
+    if(argc == 2 && strcmp(argv[1], "--help")==0)
+    {
+        cout << "./FaceSeg.exe $thread $blur_r $private_level" << endl;
+        cout << "thread: [1-4] the number of thread used when do infer" << endl;
+        cout << "blur_r: [2i+1] radius of blur kernel, 7-15 will get proper result" << endl;
+        cout << "private_level: [0-4]: level of privacy" << endl;
+
+        return 0;
+    }
 
     auto model_path = ".\\Dnc_SINet_bi_256_192_fp16.mnn";
     auto bg_path = ".\\bg.jpg";
@@ -27,9 +36,11 @@ int main(int argc, char* argv[])
     int skip_frequnece = 5;
     float gamma_tran = 0.6;
     bool no_skip = true;
+
     int thread = atoi(argv[1]);
     int blur_r = atoi(argv[2]);
     float private_level = p[atoi(argv[3])];
+
     cout << "thread(1-4):" << thread << endl;
     cout << "blur_r(2i+1):" << blur_r << endl;
     cout << "private_level(0-4):" << atoi(argv[3]) << endl;
