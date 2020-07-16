@@ -78,7 +78,7 @@ An executable file FaceSeg.exe and a dll file FaceSegDll.dll can be found in x64
 
 ### Run demo
 
-Copy these two file in x64/Run. Then open the powershell and run
+Copy FaceSeg.exe and FaceSegDll.dll in x64/Run. Then open the powershell and run by script
 
 ```shell
 cd path/to/project/Release/Run
