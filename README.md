@@ -96,7 +96,7 @@ private_level: [0-4]: level of privacy
 
 ## Demo example
 
-![demo](./WechatIMG21214.png)
+![demo](https://github.com/YexingWan/Fast-Portrait-Segmentation/blob/master/WechatIMG21214.png)
 
 
 # DLL
