@@ -70,6 +70,8 @@ The minimal requirement file for runing demo is given in folder /x64/Run.
 
 * Make sure the VS in install correctly and load the project by file FaceSeg.sln
 * Set the external link correctly to make sure vs can find MNN, OpenCV and other requirement.
+* The project use **OpenCV static link library** as default. if you want to use dynamic version of OpenCV, 
+make sure the project is setting correct in VS and copy all OpenCV dll to the same folder of executable file when run the demo.
 * Build the FaceSegDll solution first.
 * Then build the FaceSeg solution.
 
