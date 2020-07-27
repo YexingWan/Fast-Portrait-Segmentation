@@ -12,7 +12,7 @@ void pad(cv::Mat &image, int expect_h, int expect_w, cv::Mat &dst)
 
     int img_h = image.rows;
     int img_w = image.cols;
-    if (img_h > expect_h or img_w > expect_w)
+    if (img_h > expect_h || img_w > expect_w)
     {
         dynamic_resize(image, expect_h, expect_w, image);
         img_h = image.rows;
@@ -38,7 +38,7 @@ tuple<int, int, bool> dynamic_resize(cv::Mat &input_img, int expect_h, int expec
     int h_in = h;
     int w_in = w;
     bool re = false;
-    if (h > expect_h or w > expect_w)
+    if (h > expect_h || w > expect_w)
     {
         re = true;
 

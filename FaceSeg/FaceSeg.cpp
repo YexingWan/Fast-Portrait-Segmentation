@@ -92,13 +92,13 @@ int main(int argc, char *argv[])
         // 此处为添加对视频的每一帧的操作方法
         //auto out = mnn_model.face_seg(frame);
 
-        if (now_have_face and idx % have_face_detect_frequence == 0)
+        if (now_have_face && idx % have_face_detect_frequence == 0)
         {
             now_have_face = mnn_model.have_face(frame);
         }
         if (now_have_face)
         {
-            if (no_skip or idx % skip_frequnece != 0)
+            if (no_skip || idx % skip_frequnece != 0)
             {
                 cv::Mat ori_image;
                 frame.copyTo(ori_image);

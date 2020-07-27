@@ -38,7 +38,7 @@ model::model(const char *weight_path, const char *face_w, const char *face_c,
 		cerr << "caffemodel: " << face_c << endl;
 		cerr << "Models are available here:" << endl;
 		cerr << "<OPENCV_SRC_DIR>/samples/dnn/face_detector" << endl;
-		cerr << "or here:" << endl;
+		cerr << "|| here:" << endl;
 		cerr << "https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector" << endl;
 		exit(-1);
 	}
@@ -91,7 +91,7 @@ model::model(const char *weight_path, const char *face_w, const char *face_c,
 	cout << "bg w:" << bg_w << endl;
 	cout << "bg h:" << bg_h << endl;
 
-	if (proper_bg_h and proper_bg_w)
+	if (proper_bg_h && proper_bg_w)
 	{
 		cout << "proper_bg_w:" << proper_bg_w << endl;
 		cout << "proper_bg_h:" << proper_bg_h << endl;
@@ -180,7 +180,7 @@ int model::setBG(const char *new_bg_path, int proper_bg_h, int proper_bg_w)
 	auto bg_w = syn_bg.cols;
 	int re_bg_w = bg_w;
 	int re_bg_h = bg_h;
-	if (proper_bg_h and proper_bg_w)
+	if (proper_bg_h && proper_bg_w)
 	{
 		if (bg_h / bg_w >= proper_bg_h / proper_bg_w)
 		{

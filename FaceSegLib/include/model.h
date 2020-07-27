@@ -7,7 +7,18 @@
 using namespace MNN;
 using namespace std;
 
-class model
+#if defined (_WIN32)
+  #if defined(MyLibrary_EXPORTS)
+    #define  MYLIB_EXPORT __declspec(dllexport)
+  #else
+    #define  MYLIB_EXPORT __declspec(dllimport)
+  #endif /* MyLibrary_EXPORTS */
+#else /* defined (_WIN32) */
+ #define MYLIB_EXPORT
+#endif
+
+
+class MYLIB_EXPORT model
 {
 public:
 	model();
