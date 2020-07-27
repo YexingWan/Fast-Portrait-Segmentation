@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD 14)
 option(BUILD_TESTS "NOTE:whether to build test program" OFF)
 
 find_package(OpenCV 4 REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
-link_directories(${OpenCV_LIBRARY_DIRS})
+include_directories(${OpenCV_INCLUDE_DIRS} ${MNN_INCLUDE_DIRS})
+link_directories(${OpenCV_LIBRARY_DIRS} ${MNN_LIBRARY_DIRS})
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/FaceSegLib)
 include_directories(${CMAKE_SOURCE_DIR}/FaceSegLib/include)
