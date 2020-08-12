@@ -1,19 +1,25 @@
 ﻿#pragma once
-#ifndef DLL_EXPORT
-#define DLL_EXPORT __declspec(dllexport)
-#endif
-
 
 #include <MNN/Tensor.hpp>
 #include <MNN/Interpreter.hpp>
-#include <opencv.hpp>
-
+#include <opencv2/opencv.hpp>
 
 using namespace MNN;
 using namespace std;
 
+#if defined (_WIN32)
+  #if defined(MyLibrary_EXPORTS)
+    #define  MYLIB_EXPORT __declspec(dllexport)
+  #else
+    #define  MYLIB_EXPORT __declspec(dllimport)
+  #endif /* MyLibrary_EXPORTS */
+#else /* defined (_WIN32) */
+ #define MYLIB_EXPORT
+#endif
 
-class DLL_EXPORT model {
+
+class MYLIB_EXPORT model
+{
 public:
 	model();
 
@@ -29,9 +35,9 @@ public:
 	/// <param name="thread">推理用线程数</param>
 	/// <param name="private_level">隐私参数（概率转换相关），隐私程度从低到高建议数值为【0.0,0.41,0.847,1.38,2.19】，</param>
 	/// <returns></returns>
-	model(const char* weight_path, const char* face_w, const char* face_c, 
-		const char* bg_path, int proper_bg_h = NULL, int proper_bg_w = NULL, 
-		int thread = 1, float private_level = 0.41);
+	model(const char *weight_path, const char *face_w, const char *face_c,
+		  const char *bg_path, int proper_bg_h = 0, int proper_bg_w = 0,
+		  int thread = 1, float private_level = 0.41);
 	~model();
 	int getInputH();
 	int getInputW();
@@ -42,7 +48,7 @@ public:
 	int getOutputC();
 	int getOutputN();
 	cv::Mat getBG();
-	int setBG(const char* new_bg_path, int proper_bg_h = NULL, int proper_bg_w = NULL);
+	int setBG(const char *new_bg_path, int proper_bg_h = 0, int proper_bg_w = 0);
 	int setPrivateLevel(float private_level);
 
 	/// <summary>
@@ -50,7 +56,7 @@ public:
 	/// </summary>
 	/// <param name="image">输入图像</param>
 	/// <returns></returns>
-	tuple<int, int, bool> preprocess(cv::Mat& image);
+	tuple<int, int, bool> preprocess(cv::Mat &image);
 	/// <summary>
 	/// 推理，将预处理后的图像输入该方法，得到经过网络推理后的结果矩阵，类型为Mat
 	/// </summary>
@@ -91,20 +97,19 @@ public:
 	/// <param name="image">原图</param>
 	/// <param name="area_threashold">人脸区域占全图面积比阈值，比如人脸的面积占全图的0.25*0.25=0.0625，既约等于长宽为原图的1/4</param>
 	/// <returns>bool，是否存在面积大于该阈值的人脸</returns>
-	bool have_face(cv::Mat image,float area_threashold = 0.0625);
-
+	bool have_face(cv::Mat image, float area_threashold = 0.0625);
 
 private:
-	Tensor* getOutputTensor();
+	Tensor *getOutputTensor();
 	std::shared_ptr<MNN::Interpreter> getInterpreter();
-	Tensor* getInputTensor();
-	Session* getSession();
-	cv::Mat bg; // 背景
-	const char* weight_path; // mnn模型路径
-	const char* bg_path; //背景路径
-	Session* S; //MNN Session
-	MNN::Tensor* In_T; //Input Tensor
-	MNN::Tensor* Out_T; //Output Tensor
+	Tensor *getInputTensor();
+	Session *getSession();
+	cv::Mat bg;							 // 背景
+	const char *weight_path;			 // mnn模型路径
+	const char *bg_path;				 //背景路径
+	Session *S;							 //MNN Session
+	MNN::Tensor *In_T;					 //Input Tensor
+	MNN::Tensor *Out_T;					 //Output Tensor
 	std::shared_ptr<MNN::Interpreter> I; // MNN Interpreter
 
 	int input_w;
@@ -122,6 +127,4 @@ private:
 	const size_t face_inHeight = 300;
 	const double inScaleFactor = 1.0;
 	float confidenceThreshold = 0.5; // face confident threshold
-
-
 };
