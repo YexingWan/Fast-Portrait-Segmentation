@@ -17,8 +17,8 @@ The solution is in developing and will come out soon.
 This project is developed on VS2019 and only test on Windows. We now provide CMAKELIST to support multi-platform by cmake.
 
 * CMAKE
-* MNN 1.0.0 
-* OpenCV >= 4.1
+* MNN 1.0.0 (https://github.com/alibaba/MNN/releases)
+* OpenCV >= 4.1 (for windows: https://opencv.org/releases/ Don't forget to set environment variable. For Linux, you should build opencv by yourself)
 * VS2019 (For Windows)
 * [Visual C++ Redistributable Packages](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (for run the demo on Windows)
 
@@ -38,9 +38,9 @@ Python demo is the intermediate outcome from developing C++ demo. Start from pyt
 
 * bg.jpg: The background image
 * cam_seg.py: The main python script of python demo
-* XXX.mnn: model with mnn format
-* XXX.onnx: model with onnx format (can be checked by [netron](https://github.com/lutzroeder/netron)) 
-* opencv_face_*: opencv dnn face detection model, it is not used in python demo
+* XXX.mnn: model with mnn format (Trained and convert my myself)
+* XXX.onnx: model with onnx format, can be checked by [netron](https://github.com/lutzroeder/netron)) 
+* opencv_face_*: opencv dnn face detection model, from https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector
 * runIE: script for testing the correctness of model conversion
 * test_opencv_facedet.py: script for testing opencv face detection
 
@@ -62,7 +62,7 @@ The minimal requirement file for runing demo is given in folder /x64/Run.
 * bg.jpg: The background used in demo.
 * Dnc_SINet_bi_256_192_fp16.mnn: MNN model for portrait segmentation
 * MNN.dll: the MNN released dll (Please download yourself on MNN release site: https://github.com/alibaba/MNN/releases)
-* opencv_face_*: model files for face detection in demo.
+* opencv_face_*: model files for face detection in demo.()
 
 ### Build demo on Windows
 
