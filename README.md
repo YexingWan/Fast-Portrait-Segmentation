@@ -67,7 +67,7 @@ The minimal requirement file for runing demo is given in folder /x64/Run.
 ### Build demo on Windows
 
 * Make sure the VS in install correctly 
-* Generate FaceSeg.sln file by cmake
+* Generate FaceSeg.sln file by cmake. (Don't forget to set MNN_INCLUDE_DIRS and MNN_LIBRARY_DIRS)
 * Load the project by file FaceSeg.sln in VS
 * Set the external link correctly to make sure VS can find MNN, OpenCV and other requirement.
 * The project use **OpenCV static link library** as default. if you want to use dynamic version of OpenCV, 
@@ -82,11 +82,11 @@ An executable file FaceSeg.exe and a dll file FaceSegDll.dll can be found in x64
 * Please make sure OpenCV and MNN can be found by CMake
 
 ```shell
- export MNN_INCLUDE_DIRS=/path/to/MNN/inc
- export MNN_LIBRARY_DIRS=/path/to/MNN.so
  cd /path/to/project
  mkdir build
- cd build && cmake .. && make
+ cd build
+ cmake -DMNN_INCLUDE_DIRS=/path/to/MNN/inc -DMNN_LIBRARY_DIRS=/path/to/MNN.so
+ make -j2
  ```
 
 ### Run demo
